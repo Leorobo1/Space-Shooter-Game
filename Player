@@ -1,0 +1,42 @@
+public class Player extends Actor
+{
+    boolean canFire = true;
+    public Player(){
+       setRotation(270); 
+    }
+    /**
+     * Act - do whatever the Player wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        move();
+        fireBullet();
+    }    
+    public void move(){
+        int y = getY();
+        int x = getX();
+        
+        if(Greenfoot.isKeyDown("left"))
+        {
+            setLocation(getX()-7,getY());
+        }
+        if(Greenfoot.isKeyDown("right"))
+        {
+            setLocation(getX()+7,getY());
+        }
+    }
+    public void fireBullet()
+    {
+        if(Greenfoot.isKeyDown("space") && canFire ==true )
+        {
+            getWorld().addObject(new bullet(),getX(),getY()-30);
+            canFire = false;
+        }
+        else if (!Greenfoot.isKeyDown("space"))
+        {
+            canFire = true;
+        }
+    }
+    
+}
