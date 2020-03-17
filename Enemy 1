@@ -1,0 +1,31 @@
+public class Enemy1 extends Enemy
+{
+    public Enemy1()
+    {
+        GreenfootImage myImage = getImage();
+        int myNewHeight = (int)myImage.getHeight()/3;
+        int myNewWidth = (int)myImage.getWidth()/3;
+        myImage.scale(myNewWidth, myNewHeight);
+    }
+    /**
+     * Act - do whatever the Enemy1 wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        moveEnemy();
+        removeEnemy();
+        hitByBullet();
+    }   
+    public void hitByBullet()
+    {
+        Actor Bullet = getOneIntersectingObject(bullet.class);
+        if (Bullet != null)
+        {
+            getWorld().removeObject(Bullet);
+            getWorld().removeObject(this);
+            
+        }
+    }
+    
+}
