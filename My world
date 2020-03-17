@@ -1,0 +1,58 @@
+public class MyWorld extends World
+{
+
+    /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public MyWorld()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(900, 600, 1); 
+        prepare();
+    }
+    public void act()
+    {
+        
+        addEnemy1();
+        addEnemy2();
+        
+    }
+    public void addEnemy1()
+    {
+        if(Greenfoot.getRandomNumber(250)<1)
+        {
+        addObject(new Enemy1(), Greenfoot.getRandomNumber(900),0);
+        }
+    }
+    public void addEnemy2()
+    {
+        if(Greenfoot.getRandomNumber(350)<1)
+        {
+        addObject(new Enemy2(), Greenfoot.getRandomNumber(900),0);
+    }
+    }
+    
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        Player player = new Player();
+        addObject(player,421,298);
+        player.setLocation(406,507);
+        player.setLocation(423,507);
+        Enemy2 enemy2 = new Enemy2();
+        addObject(enemy2,429,54);
+        enemy2.setLocation(208,65);
+        enemy2.setLocation(250,63);
+        Enemy1 enemy1 = new Enemy1();
+        addObject(enemy1,706,120);
+        enemy1.setLocation(683,69);
+        removeObject(enemy2);
+        removeObject(enemy1);
+       
+       
+    }
+}
